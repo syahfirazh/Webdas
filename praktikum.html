@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aroma Senja - Coffee & Eatery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Aroma Senja</h1>
+        <p>Menyeduh Cerita di Setiap Cangkir</p>
+        <nav>
+            <ul>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reservasi">Reservasi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="tentang">
+            <article>
+                <h2>Tentang Kami</h2>
+                <p>Didirikan sejak tahun 2020, Aroma Senja hadir untuk memberikan pengalaman minum kopi yang autentik.<br>
+                Kami menggunakan biji kopi pilihan langsung dari petani lokal di Indonesia.</p>
+                <img src="cafe.png" alt="Suasana Cafe" class="hero-img">
+            </article>
+        </section>
+
+        <hr>
+
+        <section id="menu">
+            <h3>Menu Andalan Kami</h3>
+            <!-- 1. INLINE JS: Menggunakan atribut onmouseover -->
+            <p onmouseover="this.style.color='brown'" onmouseout="this.style.color='black'">
+                *Arahkan kursor ke sini untuk melihat info harga terbaru.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Minuman</th>
+                        <th>Kategori</th>
+                        <th>Harga</th>
+                    </tr>
+                </thead>
+                <tbody id="menu-body">
+                    <tr>
+                        <td>Espresso Single</td>
+                        <td>Coffee</td>
+                        <td>15.000</td>
+                    </tr>
+                    <tr>
+                        <td>Caramel Macchiato</td>
+                        <td>Coffee</td>
+                        <td>28.000</td>
+                    </tr>
+                    <tr>
+                        <td>Matcha Latte</td>
+                        <td>Non-Coffee</td>
+                        <td>25.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <aside>
+            <h4>Promo Minggu Ini!</h4>
+            <p>Beli 2 Kopi Susu Gula Aren, gratis 1 Brownies Cokelat. Berlaku s/d hari Jumat.</p>
+            <!-- 1. INLINE JS: Menggunakan atribut onclick -->
+            <button onclick="alert('Promo ini berlaku khusus makan di tempat (dine-in)!')">Cek Syarat Promo</button>
+        </aside>
+
+        <section id="reservasi">
+            <h3>Booking Meja</h3>
+            <p id="output-welcome"></p> <!-- 6. OUTPUT DASAR akan muncul di sini -->
+            
+            <form id="formReservasi">
+                <div class="field">
+                    <label for="email">Email Konfirmasi:</label>
+                    <input type="email" id="email" name="email" required placeholder="nama@email.com">
+                </div>
+
+                <div class="field">
+                    <label for="pax">Jumlah Orang (Max 10):</label>
+                    <input type="number" id="pax" name="pax" min="1" max="10" value="2">
+                </div>
+
+                <div class="field">
+                    <label for="tanggal">Tanggal Kunjungan:</label>
+                    <input type="date" id="tanggal" name="tanggal">
+                </div>
+
+                <button type="submit" id="btnSubmit">Cek Ketersediaan</button>
+            </form>
+            
+            <div id="notifikasi" style="margin-top: 20px; font-weight: bold;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Aroma Senja Coffee. Jl. Kenangan No. 123.</p>
+    </footer>
+
+    <!-- 2. INTERNAL JS -->
+    <script>
+        console.log("Internal JS: Sistem Reservasi Aroma Senja siap digunakan.");
+    </script>
+
+    <!-- 3. EXTERNAL JS -->
+    <script src="script.js"></script>
+
+</body>
+</html>
