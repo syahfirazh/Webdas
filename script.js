@@ -1,59 +1,30 @@
-// ==========================================
-// 4. VARIABEL & 5. TIPE DATA
-// ==========================================
-const namaCafe = "Aroma Senja";    // Tipe: String
-let kapasitasTersisa = 5;          // Tipe: Number (Contoh sisa meja)
-let isBuka = true;                 // Tipe: Boolean
+// VARIABEL & TIPE DATA
+const namaCafe = "Aroma Senja"; 
+let kapasitasTersisa = 15; // Kita asumsikan ada 15 meja kosong hari ini
 
-// ==========================================
-// 6. OUTPUT DASAR
-// ==========================================
-// Menampilkan pesan selamat datang di halaman
-document.getElementById('output-welcome').innerText = "Selamat datang di sistem booking " + namaCafe;
+// OUTPUT DASAR
+document.getElementById('output-welcome').innerText = "Halo! Selamat datang di sistem booking " + namaCafe;
 
-
-// ==========================================
-// 8. ARROW FUNCTION
-// ==========================================
-// Fungsi untuk menghitung total biaya perkiraan (Misal 1 orang rata-rata 25rb)
+// ARROW FUNCTION
 const hitungEstimasi = (jumlahOrang) => jumlahOrang * 25000;
 
-
-// ==========================================
-// 7. FUNGSI LOGIKA, 9. PERCABANGAN
-// ==========================================
+// LOGIKA & PERCABANGAN
 document.getElementById('formReservasi').addEventListener('submit', function(event) {
-    event.preventDefault(); // Mencegah form reload halaman
+    // Kita tidak menggunakan event.preventDefault() di sini agar PHP bisa menerima data POST, 
+    // namun kita tetap menjalankan logika pengecekan di sisi klien.
 
-    // Mengambil nilai input
     const emailInput = document.getElementById('email').value;
     const paxInput = parseInt(document.getElementById('pax').value);
     const notif = document.getElementById('notifikasi');
 
-    // Tipe Data hasil input
-    console.log("Email:", emailInput, "| Tipe:", typeof emailInput);
-    console.log("Jumlah Orang:", paxInput, "| Tipe:", typeof paxInput);
-
-    // Percabangan & Logika
     if (paxInput > kapasitasTersisa) {
-        // Jika jumlah orang melebihi sisa meja
+        event.preventDefault(); // Batalkan kirim ke PHP jika meja penuh
         notif.style.color = "red";
-        notif.innerText = "Maaf, meja tidak cukup. Sisa kapasitas hanya " + kapasitasTersisa + " orang.";
-    } 
-    else if (paxInput <= 0) {
-        // Logika jika input tidak valid
-        notif.style.color = "orange";
-        notif.innerText = "Mohon masukkan jumlah orang yang valid.";
+        notif.innerText = "Maaf, kapasitas tidak cukup. Sisa meja hanya untuk " + kapasitasTersisa + " orang.";
     } 
     else {
-        // Jika reservasi berhasil
         let estimasi = hitungEstimasi(paxInput);
-        
-        notif.style.color = "green";
-        notif.innerText = "Reservasi Berhasil! Konfirmasi dikirim ke: " + emailInput + 
-                          ". Estimasi pesanan minimal: Rp" + estimasi.toLocaleString('id-ID');
-        
-        // Mengurangi sisa kapasitas (Variabel dinamis)
-        kapasitasTersisa -= paxInput;
+        console.log("Reservasi diproses untuk:", emailInput);
+        alert("Validasi Berhasil! Estimasi pesanan minimal Anda: Rp" + estimasi.toLocaleString('id-ID'));
     }
 });
